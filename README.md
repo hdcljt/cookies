@@ -1,4 +1,10 @@
-# 浏览器 cookie 操作
+# cookies
+
+[![version](https://img.shields.io/github/package-json/v/hdcljt/cookies?color=important)](https://github.com/hdcljt/cookies/blob/master/package.json)
+[![coverage](https://img.shields.io/badge/coverage-100%25-success)](https://github.com/hdcljt/cookies/tree/master/tests)
+[![license](https://img.shields.io/badge/license-MIT-green)](https://github.com/hdcljt/cookies/blob/master/LICENSE)
+[![typescript](https://img.shields.io/npm/types/typescript)](https://github.com/hdcljt/cookies/blob/master/lib/cookies.d.ts)
+[![size](https://img.shields.io/github/size/hdcljt/cookies/lib/cookies.js)](https://github.com/hdcljt/cookies/blob/master/lib/cookies.js)
 
 操作浏览器 Cookies ，类似 Storage API
 
