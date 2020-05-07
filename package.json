@@ -1,6 +1,6 @@
 {
   "name": "@hudc/cookies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Operate document.cookie like storage API",
   "main": "lib/cookies.js",
   "types": "lib/cookies.d.ts",
