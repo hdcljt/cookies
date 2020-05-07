@@ -1,0 +1,35 @@
+{
+  "name": "@hudc/cookies",
+  "version": "1.0.0",
+  "description": "Operate document.cookie like storage API",
+  "main": "lib/cookies.js",
+  "types": "lib/cookies.d.ts",
+  "files": [
+    "lib"
+  ],
+  "author": "hudc",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "jest": {
+    "preset": "ts-jest"
+  },
+  "keywords": [
+    "cookie"
+  ],
+  "homepage": "https://github.com/hdcljt/cookies.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hdcljt/cookies.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hdcljt/cookies/issues"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^26.0.1",
+    "ts-jest": "^25.5.0",
+    "typescript": "^3.8.3"
+  }
+}
