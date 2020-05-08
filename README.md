@@ -1,11 +1,10 @@
 # @hudc/cookies
 
-![build](https://img.shields.io/badge/build-passing-brightgreen)
+[![build](https://img.shields.io/travis/hdcljt/cookies)](https://travis-ci.org/hdcljt/cookies)
+[![coverage](https://img.shields.io/coveralls/github/hdcljt/cookies)](https://coveralls.io/github/hdcljt/cookies)
 [![version](https://img.shields.io/github/package-json/v/hdcljt/cookies?color=important)](https://www.npmjs.com/package/@hudc/cookies)
-![coverage](https://img.shields.io/badge/coverage-100%25-success)
-![license](https://img.shields.io/badge/license-MIT-green)
-[![typescript](https://img.shields.io/npm/types/typescript)](https://github.com/hdcljt/cookies/blob/master/lib/cookies.d.ts)
-[![size](https://img.shields.io/github/size/hdcljt/cookies/lib/cookies.js)](https://github.com/hdcljt/cookies/blob/master/lib/cookies.js)
+[![license](https://img.shields.io/github/license/hdcljt/cookies)](LICENSE)
+[![types](https://img.shields.io/npm/types/@hudc/cookies)](lib/cookies.d.ts)
 
 操作浏览器 Cookies ，类似 Storage API
 
