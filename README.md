@@ -1,8 +1,9 @@
 # @hudc/cookies
 
-[![version](https://img.shields.io/github/package-json/v/hdcljt/cookies?color=important)](https://github.com/hdcljt/cookies/blob/master/package.json)
-[![coverage](https://img.shields.io/badge/coverage-100%25-success)](https://github.com/hdcljt/cookies/tree/master/tests)
-[![license](https://img.shields.io/badge/license-MIT-green)](https://github.com/hdcljt/cookies/blob/master/LICENSE)
+![build](https://img.shields.io/badge/build-passing-brightgreen)
+[![version](https://img.shields.io/github/package-json/v/hdcljt/cookies?color=important)](https://www.npmjs.com/package/@hudc/cookies)
+![coverage](https://img.shields.io/badge/coverage-100%25-success)
+![license](https://img.shields.io/badge/license-MIT-green)
 [![typescript](https://img.shields.io/npm/types/typescript)](https://github.com/hdcljt/cookies/blob/master/lib/cookies.d.ts)
 [![size](https://img.shields.io/github/size/hdcljt/cookies/lib/cookies.js)](https://github.com/hdcljt/cookies/blob/master/lib/cookies.js)
 
