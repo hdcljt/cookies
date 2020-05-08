@@ -1,6 +1,6 @@
 {
   "name": "@hudc/cookies",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Operate document.cookie like storage API",
   "main": "lib/cookies.js",
   "types": "lib/cookies.d.ts",
@@ -10,7 +10,9 @@
   "author": "hudc",
   "license": "MIT",
   "scripts": {
-    "test": "jest --coverage"
+    "build": "tsc",
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "jest": {
     "preset": "ts-jest"

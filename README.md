@@ -1,4 +1,4 @@
-# cookies
+# @hudc/cookies
 
 [![version](https://img.shields.io/github/package-json/v/hdcljt/cookies?color=important)](https://github.com/hdcljt/cookies/blob/master/package.json)
 [![coverage](https://img.shields.io/badge/coverage-100%25-success)](https://github.com/hdcljt/cookies/tree/master/tests)
@@ -141,6 +141,6 @@ cookies.length // 2
 
 ## 参考
 
-- <https://developer.mozilla.org/zh-CN/docs/Web/API/Document/cookie>
-- <https://github.com/js-cookie/js-cookie/blob/master/src/api.mjs>
-- <https://github.com/litejs/browser-cookie-lite/blob/master/index.js>
+- [Document.cookie](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/cookie)
+- [js-cookie](https://www.npmjs.com/package/js-cookie)
+- [browser-cookie-lite](https://www.npmjs.com/package/browser-cookie-lite)

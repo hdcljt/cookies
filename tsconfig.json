@@ -2,11 +2,14 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": "lib",
+    "declarationDir": "lib",
+    "declaration": true,
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["dom", "esnext"]
   },
-  "include": ["src/cookies.ts", "tests/*.ts"],
-  "exclude": ["node_modules"]
+  "files": ["src/cookies.ts"]
 }
