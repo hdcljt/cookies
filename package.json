@@ -1,6 +1,6 @@
 {
   "name": "@hudc/cookies",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Operate document.cookie like storage API",
   "main": "lib/cookies.esm.min.js",
   "types": "types/index.d.ts",
@@ -11,7 +11,7 @@
   "author": "hudc",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "rollup -c",
     "test": "jest",
     "coverage": "jest --coverage"
   },
@@ -19,7 +19,9 @@
     "preset": "ts-jest"
   },
   "keywords": [
-    "cookie"
+    "cookie",
+    "cookies",
+    "proxy"
   ],
   "homepage": "https://github.com/hdcljt/cookies.git",
   "repository": {

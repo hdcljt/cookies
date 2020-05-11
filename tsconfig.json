@@ -11,5 +11,5 @@
     "forceConsistentCasingInFileNames": true,
     "lib": ["dom", "esnext"]
   },
-  "files": ["src/cookies.ts"]
+  "files": ["src/index.ts"]
 }

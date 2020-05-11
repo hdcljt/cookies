@@ -7,8 +7,12 @@
 </head>
 <body>
     <script type="module">
-        import cookies from '../lib/cookies.js'
-        console.log(cookies.setItem('abc', '123'))
+        import cookies, { cookie } from '../lib/cookies.esm.min.js'
+        console.log(cookie['def[g]'] = '456:Flag=111')
+        console.log(cookie['def[g]'])
+        console.log(cookie['xyz'] = { value: 'asdf', expires: 30 })
+        console.log(cookie.xyz)
+        console.log(cookies.setItem('abc', '123', 60))
         console.log(cookies.getItem('abc'))
     </script>
 </body>
