@@ -1,6 +1,6 @@
 {
   "name": "@hudc/cookies",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Operate document.cookie like storage API",
   "main": "lib/cookies.esm.min.js",
   "types": "types/index.d.ts",
