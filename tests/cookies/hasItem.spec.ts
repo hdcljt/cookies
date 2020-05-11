@@ -1,4 +1,4 @@
-import cookies from '../src/cookies'
+import cookies from '../../src'
 
 describe('hasItem', () => {
   afterEach(() => {
@@ -8,17 +8,17 @@ describe('hasItem', () => {
     })
   })
 
-  it('key is empty', () => {
+  it('cookie: key 为空字符串', () => {
     document.cookie = 'abc=123'
     expect(cookies.hasItem('')).toBe(false)
   })
 
-  it('has abc', () => {
+  it('cookie 中存在 abc', () => {
     document.cookie = 'abc=123'
     expect(cookies.hasItem('abc')).toBe(true)
   })
 
-  it('has ABC,AbC,abc', () => {
+  it('cookie 中存在 ABC,AbC,abc', () => {
     document.cookie = 'ABC=100'
     document.cookie = 'AbC=789:FLAG=1'
     document.cookie = 'abc=789'
@@ -27,7 +27,7 @@ describe('hasItem', () => {
     expect(cookies.hasItem('abc')).toBe(true)
   })
 
-  it('has AbC[1],AbC', () => {
+  it('cookie 中存在 AbC[1],AbC', () => {
     document.cookie = 'AbC[1]=100'
     document.cookie = 'AbC=123:FLAG=1'
     expect(cookies.hasItem('AbC[1]')).toBe(true)

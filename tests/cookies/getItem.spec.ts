@@ -1,4 +1,4 @@
-import cookies from '../src/cookies'
+import cookies from '../../src'
 
 describe('getItem', () => {
   afterEach(() => {
@@ -8,20 +8,20 @@ describe('getItem', () => {
     })
   })
 
-  it('key is empty', () => {
+  it('cookie: key 为空字符串', () => {
     expect(cookies.getItem('')).toEqual('')
   })
 
-  it('abc is not exists', () => {
+  it('cookie: abc 不存在', () => {
     expect(cookies.getItem('abc')).toEqual('')
   })
 
-  it('abc is equal 123', () => {
+  it('cookie: abc 值为 123', () => {
     document.cookie = 'abc=123'
     expect(cookies.getItem('abc')).toEqual('123')
   })
 
-  it('AbC is equal 123:FLAG=1', () => {
+  it('cookie: AbC 值为 123:FLAG=1', () => {
     document.cookie = 'ABC=100'
     document.cookie = 'AbC=789:FLAG=1'
     document.cookie = 'abc=789'
@@ -30,7 +30,7 @@ describe('getItem', () => {
     expect(cookies.getItem('abc')).toEqual('789')
   })
 
-  it('AbC[1] is equal 100', () => {
+  it('cookie: AbC[1] 值为 100', () => {
     document.cookie = 'AbC=123:FLAG=1'
     document.cookie = 'AbC[1]=100'
     expect(cookies.getItem('AbC[1]')).toEqual('100')

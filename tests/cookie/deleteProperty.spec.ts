@@ -1,8 +1,8 @@
-import cookies from '../src/cookies'
+import { cookie } from '../../src'
 
 const hasItem = (key: string) => `; ${document.cookie}`.includes(`; ${key}=`)
 
-describe('removeItem', () => {
+describe('proxy -> deleteProperty', () => {
   afterEach(() => {
     const arr = document.cookie.split(';')
     arr.forEach(item => {
@@ -10,32 +10,31 @@ describe('removeItem', () => {
     })
   })
 
-  it('key is empty', () => {
-    document.cookie = 'abc=123'
-    cookies.removeItem('')
-    expect(hasItem('abc')).toBe(true)
-  })
-
-  it('abc deleted', () => {
-    document.cookie = 'abc=123'
-    cookies.removeItem('abc')
+  it('cookie: 不存在 abc', () => {
+    delete cookie.abc
     expect(hasItem('abc')).toBe(false)
   })
 
-  it('AbC deleted', () => {
+  it('cookie: 删除 abc', () => {
+    document.cookie = 'abc=123'
+    delete cookie.abc
+    expect(hasItem('abc')).toBe(false)
+  })
+
+  it('cookie: 删除 AbC', () => {
     document.cookie = 'ABC=100'
     document.cookie = 'AbC=789:FLAG=1'
     document.cookie = 'abc=789'
-    cookies.removeItem('AbC')
+    delete cookie.AbC
     expect(hasItem('AbC')).toBe(false)
     expect(hasItem('ABC')).toBe(true)
     expect(hasItem('abc')).toBe(true)
   })
 
-  it('AbC[1] deleted', () => {
+  it('cookie: 删除 AbC[1]', () => {
     document.cookie = 'AbC=123:FLAG=1'
     document.cookie = 'AbC[1]=100'
-    cookies.removeItem('AbC[1]')
+    delete cookie['AbC[1]']
     expect(hasItem('AbC[1]')).toBe(false)
     expect(hasItem('AbC')).toBe(true)
   })

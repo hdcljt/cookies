@@ -1,4 +1,4 @@
-import cookies from '../src/cookies'
+import cookies from '../../src'
 
 describe('clear', () => {
   afterEach(() => {
@@ -8,7 +8,7 @@ describe('clear', () => {
     })
   })
 
-  it('clear abc', () => {
+  it('清除cookie（只有一个abc）', () => {
     const items = ['abc=123']
     items.forEach(v => document.cookie = v)
     expect(document.cookie.split('; ')).toEqual(expect.arrayContaining(items))
@@ -16,7 +16,7 @@ describe('clear', () => {
     expect(document.cookie).toBeFalsy()
   })
 
-  it('clear ABC,AbC,abc', () => {
+  it('清除cookie（包含ABC,AbC,abc）', () => {
     const items = ['ABC=100', 'AbC=789:FLAG=1', 'abc=789']
     items.forEach(v => document.cookie = v)
     expect(document.cookie.split('; ')).toEqual(expect.arrayContaining(items))
@@ -24,7 +24,7 @@ describe('clear', () => {
     expect(document.cookie).toBeFalsy()
   })
 
-  it('clear AbC,AbC[1]', () => {
+  it('清除cookie（包含AbC,AbC[1]）', () => {
     const items = ['AbC=123:FLAG=1', 'AbC[1]=100']
     items.forEach(v => document.cookie = v)
     expect(document.cookie.split('; ')).toEqual(expect.arrayContaining(items))

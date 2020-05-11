@@ -1,9 +1,10 @@
+import { getItem, setItem, removeItem, clear, hasItem } from './utils';
 declare const cookies: {
-    getItem(key: string): string;
-    setItem(key: string, value: string, expires?: string | number, path?: string, domain?: string, secure?: boolean, sameSite?: "None" | "Strict" | "Lax"): string;
-    removeItem(key: string): void;
-    clear(): void;
-    hasItem(key: string): boolean;
+    getItem: typeof getItem;
+    setItem: typeof setItem;
+    removeItem: typeof removeItem;
+    clear: typeof clear;
+    hasItem: typeof hasItem;
     readonly keys: string[];
     readonly length: number;
 };
