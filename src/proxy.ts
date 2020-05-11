@@ -9,7 +9,7 @@ type SetType = string | {
   secure?: boolean;
   sameSite?: 'None' | 'Strict' | 'Lax';
 }
-export type ObjType = Record<string, string | SetType>
+export type ObjType = Record<string, SetType>
 
 function get (target: ObjType, key: string): string | string[] | number {
   // let value: number | string | string[] = Reflect.get(target, key)

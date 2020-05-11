@@ -6,7 +6,7 @@ declare type SetType = string | {
     secure?: boolean;
     sameSite?: 'None' | 'Strict' | 'Lax';
 };
-export declare type ObjType = Record<string, string | SetType>;
+export declare type ObjType = Record<string, SetType>;
 declare function get(target: ObjType, key: string): string | string[] | number;
 declare function set(target: ObjType, key: string, val: SetType): boolean;
 declare function deleteProperty(target: ObjType, key: string): boolean;

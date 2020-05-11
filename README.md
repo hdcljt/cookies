@@ -6,7 +6,7 @@
 [![license](https://img.shields.io/github/license/hdcljt/cookies)](LICENSE)
 [![types](https://img.shields.io/npm/types/@hudc/cookies)](lib/cookies.d.ts)
 
-操作浏览器 Cookies ，类似 Storage API
+使用 `Proxy` 代理浏览器 `cookie` 的常用操作，也支持使用类似 Storage API 的方式操作 `cookie`
 
 ## 安装
 
@@ -17,31 +17,34 @@ npm install @hudc/cookies
 ## 引入
 
 ```ts
-import cookies from '@hudc/cookies'
+import cookies, {
+  cookie,
+  getItem,
+  setItem,
+  removeItem,
+  hasItem,
+  clear,
+  keys,
+  length,
+} from '@hudc/cookies'
 ```
 
-## 查询 cookie
+> 1. 默认导出的 `cookies` 封装了 `getItem`, `setItem`, `removeItem`, `hasItem`, `clear`, `keys`, `length` 方法
+> 2. 按需导出的 `cookie` 使用 Proxy 代理了 `get`, `set`, `deleteProperty`, `has`, `ownKeys` 方法
 
-### 方法
+### 查询 cookie
 
 ```ts
-getItem(key: string): string
+// 假设 document.cookie 值为 'abc=123; def-1=456%3AFLAG%3D1'
+cookie.abc // 输出 '123'
+cookie['def-1'] // 输出 '456:FLAG=1'
+cookies.getItem('abc') // 输出 '123'
+cookies.getItem('def-1') // 输出 '456:FLAG=1'
+getItem('abc') // 输出 '123'
+getItem('def-1') // 输出 '456:FLAG=1'
 ```
 
-### 示例
-
-```ts
-// 假设 document.cookie 值为 'abc=123'
-cookies.getItem('abc') // 输出 123
-```
-
-## 设置 cookie
-
-### 方法
-
-```ts
-setItem(key: string, value: string, expires?: string | number, path?: string, domain?: string, secure?: boolean, sameSite?: "None" | "Strict" | "Lax"): string
-```
+### 设置 cookie
 
 - expires 过期时间  
   * 值可以是一个 dateString，或者一个 timeStamp
@@ -56,87 +59,63 @@ setItem(key: string, value: string, expires?: string | number, path?: string, do
   * Lax 默认
 - 返回当前设置的完整信息
 
-### 示例
-
 ```ts
-cookies.setItem('abc', '123') // abc=123
-cookies.setItem('def', '456:FLAG=1') // abc=123; def=456%3AFLAG%3D1
-cookies.setItem('ghi', '789', 5) // abc=123; def=456%3AFLAG%3D1; ghi=789
-cookies.setItem('ghi', '789', 'Tue, 19 Jan 2038 03:14:07 GMT') // abc=123; def=456%3AFLAG%3D1; ghi=789
-cookies.setItem('ghi', '789', 2147483647000) // abc=123; def=456%3AFLAG%3D1; ghi=789
-cookies.setItem('jkl[1]', '100_234') // abc=123; def=456%3AFLAG%3D1; ghi=789; jkl[1]=100_234
+// 假设 document.cookie 为空
+cookie.abc = '123' // 'abc=123'
+cookie['def-1'] = { value: '456:FLAG=1' } // 'abc=123; def-1=456%3AFLAG%3D1'
+cookie['ghi[1]'] = { value: '789', expires: 5 } // 'abc=123; def-1=456%3AFLAG%3D1; ghi[1]=789'
+// 假设 document.cookie 为空
+cookies.setItem('abc', '123') // 'abc=123'
+cookies.setItem('def-1', '456:FLAG=1') // 'abc=123; def-1=456%3AFLAG%3D1'
+cookies.setItem('ghi[1]', '789', 'Tue, 19 Jan 2038 03:14:07 GMT') // 'abc=123; def-1=456%3AFLAG%3D1; ghi[1]=789'
+// 假设 document.cookie 为空
+setItem('abc', '123') // 'abc=123'
+setItem('def-1', '456:FLAG=1') // 'abc=123; def-1=456%3AFLAG%3D1'
+setItem('ghi[1]', '789', 2147483647000) // 'abc=123; def-1=456%3AFLAG%3D1; ghi[1]=789'
 ```
 
-## 删除 cookie
-
-### 方法
+### 删除 cookie
 
 ```ts
-removeItem(key: string): void
+// 假设 document.cookie 值为 'abc=123; def-1=456%3AFLAG%3D1; ghi[1]=789'
+delete cookie.abc // 'def-1=456%3AFLAG%3D1; ghi[1]=789'
+cookies.removeItem('def-1') // 'ghi[1]=789'
+removeItem('ghi[1]') // ''
 ```
 
-### 示例
-
-```ts
-cookies.removeItem('abc')
-```
-
-## 清空 cookies
-
-### 方法
-
-```ts
-clear(): void
-```
-
-### 示例
+### 清空 cookies
 
 ```ts
 cookies.clear()
+clear()
 ```
 
-## 是否存在指定名称的 cookie
-
-### 方法
+### 是否存在指定名称的 cookie
 
 ```ts
-hasItem(key: string): boolean
+// 假设 document.cookie 值为 'abc=123; def-1=456%3AFLAG%3D1; ghi[1]=789'
+'abc' in cookie // true
+cookies.hasItem('def-1') // true
+hasItem('ghi[1]') // true
 ```
 
-### 示例
-
-```ts
-cookies.hasItem('abc') // true/false
-```
-
-## 获取所有 cookie 名称
-
-### 属性
-
-```ts
-keys: string[]
-```
-
-### 示例
+### 获取所有 cookie 名称
 
 ```ts
 // 假设 document.cookie 值为 'abc=123; def=456:FLAG=1'
-cookies.keys // ['abc', 'def']
+cookie.keys // 输出 ['abc', 'def']
+Object.getOwnPropertyNames(cookie) // 输出 ['abc', 'def']
+cookies.keys // 输出 ['abc', 'def']
+keys() // 输出 ['abc', 'def']
 ```
 
-## 获取 cookies 数量
-
-### 属性
-
-```ts
-length: number
-```
-
-### 示例
+### 获取 cookies 数量
 
 ```ts
 // 假设 document.cookie 值为 'abc=123; def=456:FLAG=1'
-cookies.length // 2
+cookie.length // 输出 2
+cookies.length // 输出 2
+length() // 输出 2
 ```
 
 ## 参考
