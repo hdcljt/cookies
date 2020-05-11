@@ -3,7 +3,7 @@ function getItem (key: string): string {
   return key ? decodeURIComponent((`; ${document.cookie}`.split(`; ${key}=`)[1] || '').split(';')[0]) : ''
 }
 
-function setItem (key: string, value: string, expires?: string | number, path?: string, domain?: string, secure?: boolean, sameSite?: 'None'|'Strict'|'Lax'): string {
+function setItem (key: string, value: string, expires?: string | number, path?: string, domain?: string, secure?: boolean, sameSite?: 'None' | 'Strict' | 'Lax'): string {
   if (!key) return ''
 
   const cookie = []
@@ -21,7 +21,7 @@ function setItem (key: string, value: string, expires?: string | number, path?: 
   path && cookie.push(`Path=${path}`)
   domain && cookie.push(`Domain=${domain}`)
   secure === true && cookie.push('Secure')
-  sameSite && ['None','Strict','Lax'].includes(sameSite) && cookie.push(`SameSite=${sameSite}`)
+  sameSite && ['None', 'Strict', 'Lax'].includes(sameSite) && cookie.push(`SameSite=${sameSite}`)
 
   const result = cookie.join('; ')
   document.cookie = result

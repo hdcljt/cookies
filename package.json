@@ -2,9 +2,10 @@
   "name": "@hudc/cookies",
   "version": "1.0.3",
   "description": "Operate document.cookie like storage API",
-  "main": "lib/cookies.js",
-  "types": "lib/cookies.d.ts",
+  "main": "lib/cookies.esm.min.js",
+  "types": "types/index.d.ts",
   "files": [
+    "types",
     "lib"
   ],
   "author": "hudc",
@@ -31,6 +32,9 @@
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "jest": "^26.0.1",
+    "rollup": "^2.9.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "rollup-plugin-typescript2": "^0.27.0",
     "ts-jest": "^25.5.0",
     "typescript": "^3.8.3"
   }

@@ -1,6 +1,6 @@
 import { cookie } from '../../src'
 
-describe('proxy -> has', () => {
+describe('proxy -> ownKeys', () => {
   afterEach(() => {
     const arr = document.cookie.split(';')
     arr.forEach(item => {
@@ -28,15 +28,5 @@ describe('proxy -> has', () => {
     document.cookie = 'AbC[1]=100'
     document.cookie = 'AbC=123:FLAG=1'
     expect(Object.getOwnPropertyNames(cookie)).toEqual(expect.arrayContaining(['AbC[1]', 'AbC']))
-  })
-
-  it('cookie: 存在 AbC[1],AbC', () => {
-    document.cookie = 'AbC[1]=100'
-    document.cookie = 'AbC=123:FLAG=1'
-    console.log('xxxxxxxxxxxx')
-    for (const key in cookie) {
-      console.log(key)
-      expect(['AbC[1]', 'AbC']).toContain(key)
-    }
   })
 })

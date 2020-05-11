@@ -5,7 +5,7 @@ jest.mock('../../src/utils', () => ({
 
     const cookie = []
     cookie.push(`${key}=${encodeURIComponent(value)}`)
-  
+
     let strExpires = ''
     if (typeof expires === 'number' && expires < 1e9) {
       strExpires = new Date(Date.now() + expires * 1e3).toUTCString()
@@ -14,12 +14,12 @@ jest.mock('../../src/utils', () => ({
       strExpires = isNaN(d.getTime()) ? '' : d.toUTCString()
     }
     strExpires && cookie.push(`Expires=${strExpires}`)
-  
+
     path && cookie.push(`Path=${path}`)
     domain && cookie.push(`Domain=${domain}`)
     secure === true && cookie.push('Secure')
-    sameSite && ['None','Strict','Lax'].includes(sameSite) && cookie.push(`SameSite=${sameSite}`)
-  
+    sameSite && ['None', 'Strict', 'Lax'].includes(sameSite) && cookie.push(`SameSite=${sameSite}`)
+
     result = cookie.join('; ')
     document.cookie = result
     return result
